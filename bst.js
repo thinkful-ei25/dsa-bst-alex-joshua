@@ -88,6 +88,13 @@ class BST{
     return this.left._findMin();
   }
 
+  _findMax(){
+    if(!this.right){
+      return this;
+    }
+    return this.right._findMax();
+  }
+
   _replaceWith(node){
     if(this.parent){
       if(this === this.parent.left){
