@@ -1,8 +1,8 @@
 'use strict';
 const BST = require('./bst');
 
-function findHeight(node){
-  if(!node){
+function findHeight(node) {
+  if (!node) {
     return 0;
   }
 
@@ -62,15 +62,15 @@ if right and left keys okay,
 else return true
 */
 
-function checkBST(bst){
-  if(bst.right === null || bst.left === null){
+function checkBST(bst) {
+  if (bst.right === null || bst.left === null) {
     return;
   }
-  if(bst.right < bst.key){
+  if (bst.right < bst.key) {
     return false;
-  } else if(bst.left > bst.key){
+  } else if (bst.left > bst.key) {
     return false;
-  } else{
+  } else {
     checkBST(bst.left);
     checkBST(bst.right);
   }
@@ -109,17 +109,17 @@ find the maximum value of the tree
     return 3rd greatest value
 */
 
-function thirdLargestNode(bst){
+function thirdLargestNode(bst) {
   let max = bst._findMax();
 
-  if (max.left){
+  if (max.left) {
     return Math.min(max.key, max.left.key, max.parent.key);
   }
   return Math.min(max.key, max.parent.key, max.parent.left.key);
 }
 
 
-function main(){
+function main() {
   const tree = new BST();
   const badTreeVal = new BST();
   const tree2 = new BST();
@@ -158,15 +158,15 @@ function main(){
       value: 7
     },
   ];
-  for(let i = 0; i < treeArr.length; i++){
+  for (let i = 0; i < treeArr.length; i++) {
     tree.insert(treeArr[i].key, treeArr[i].value);
   }
-  for(let i = 0; i < treeArr.length; i++){
+  for (let i = 0; i < treeArr.length; i++) {
     badTreeVal.insert(treeArr[i].key, treeArr[i].value);
   }
 
-  let tree2Arr = [9,5,13,3,7,11,15];
-  for(let i = 0; i < tree2Arr.length; i++){
+  let tree2Arr = [9, 5, 13, 3, 7, 11, 15];
+  for (let i = 0; i < tree2Arr.length; i++) {
     tree2.insert(tree2Arr[i], null);
   }
 
@@ -174,7 +174,7 @@ function main(){
   badTreeVal.right = 1;
 
   console.log(findHeight(tree));
-  
+
   console.log(checkBST(tree));
   console.log(checkBST(badTreeVal));
 
@@ -190,5 +190,5 @@ main();
         1   4
          2    6
              5   9
-                7             
+                7
 */
